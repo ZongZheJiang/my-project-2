@@ -27,7 +27,9 @@ const NavBar = () => {
             <nav className='container mx-auto flex justify-between items-center w-full h-full'>
 
                 <div>
-                    <img src="/logo.svg" alt='logo' className='w-[50px] h-[50px]' onClick={() => handleNavigate('/')}/>
+                    <a onClick={() => handleNavigate('/')}>
+                        <i className="fa-solid fa-house"></i>
+                    </a>
                 </div>
                 <button className="btn btn-soft" onClick={() => handleNavigate('/projects')}>
                     Projects
@@ -35,22 +37,19 @@ const NavBar = () => {
                 <button className="btn btn-soft" onClick={() => handleNavigate('/about')}>
                     About Me
                 </button>
+                <div className="hidden sm:flex gap-2">
+                    <a className="btn btn-circle btn-ghost btn-sm text-xl" onClick={() => handleNavigate('https://github.com/ZongZheJiang')}>
+                        <i className="fa-brands fa-fw fa-github"></i>
+                    </a>
 
-                
-                <div onClick={handleClick}>
-                    <img src={!toggle ? "/menu.svg" : "/close.svg"} alt='menu' className='w-[30px] h-[30px]' />
+                    <a className="btn btn-circle btn-ghost btn-sm text-xl" onClick={() => handleNavigate('https://www.linkedin.com/in/jiang-zong-zhe-047587240/')}>
+                        <i className="fa-brands fa-fw fa-linkedin"></i>
+                    </a>
+
+                    <a className="btn btn-circle btn-ghost btn-sm text-xl" onClick={() => handleNavigate('https://www.kaggle.com/zongzhejiang')}>
+                        <i className="fa-brands fa-fw fa-kaggle"></i>
+                    </a>
                 </div>
-                {/* <ul className={toggle?'absolute bg-white w-full px-8 md:hidden':'hidden'} style = {{display: toggle ? 'block' : 'none'}}>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Support</li>
-                    <li>Platform</li>
-                    <li>Pricing</li>
-                    <div className='flex flex-col my-4'>
-                        <button className='bg-transparent text-black mb-4 py-3 px-8'>Login</button>
-                        <button className='px-8 py-3'>Sign Up</button>
-                    </div>
-                </ul> */}
             </nav>
             
         </div>
