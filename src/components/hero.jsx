@@ -13,7 +13,14 @@ const Hero = ({ title, body, imageSrc }) => {
                 <p className="mb-5">
                     {body}
                 </p>
-                <button className="btn btn-primary">Get Started</button>
+                <a 
+                href="/JiangZongZhe_Resume_Berkeley_SWE.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                >
+                View My Resume
+                </a>
                 </div>
             </div>
         </div>
