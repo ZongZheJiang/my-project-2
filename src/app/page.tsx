@@ -7,8 +7,8 @@ export default function Home() {
       <NavBar />
       <main className="pt-20">
         <Hero 
-          title="Welcome to my Portfolio" 
-          body="I am a Year 2 Computer Science Student at Nanyang Technological University, Singapore. I am passionate about creating applications." 
+          title="Jiang Zong Zhe"
+          body="Aspiring Machine Learning Engineer building at the intersection of code, strategy, and human impact" 
           imageSrc="/self-portrait.jpeg"
         />
       </main>

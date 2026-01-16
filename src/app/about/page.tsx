@@ -1,5 +1,7 @@
 import IntroBanner from '@/components/intro-banner';
 import NavBar from '@/components/navbar';
+import FAQ from '@/components/faq';
+
 
 export default function About() {
     return (
@@ -7,6 +9,7 @@ export default function About() {
             <NavBar />
             <main className="pt-20">
                 <IntroBanner />
+                <FAQ />
             </main>
         </div>
     )

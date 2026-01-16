@@ -10,9 +10,7 @@ const Hero = ({ title, body, imageSrc }) => {
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-md">
                 <h1 className="mb-5 text-5xl font-bold">{title}</h1>
-                <p className="mb-5">
-                    {body}
-                </p>
+                <p className="mb-5 text-lg font-bold">{body}</p>
                 <a 
                 href="/JiangZongZhe_Resume_Berkeley_SWE.pdf" 
                 target="_blank" 
