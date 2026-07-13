@@ -1,69 +1,78 @@
 "use client";
-import React from 'react';  
-import { useRouter } from 'next/navigation'; 
-import { Experience } from '@/types/experience'; 
 
-interface ExperienceProps {
+import React from 'react';
+import { Experience } from '@/types/experience';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
+
+interface ExperienceListProps {
     experiences: Experience[];
     listName: string;
 }
 
-const ExperienceList = ({ experiences, listName }: ExperienceProps) => {
-    const router = useRouter();
-
-    const handleNavigate = (url: string) => {
-        if (!url) return;
-        if (url.startsWith('http://') || url.startsWith('https://')) {
-            window.location.href = url;
-        } else {
-            router.push(url);
-        }
-    };
-
+const ExperienceList = ({ experiences, listName }: ExperienceListProps) => {
     return (
-        <div className="flex flex-col" style={{ marginTop: 70 }}>
-            <h1 className="font-bold text-3xl pb-8">{listName}</h1>
+        <section className="px-6 py-8 max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold tracking-tight mb-10">{listName}</h2>
 
-            {experiences.map((exp, index) => (
-                <React.Fragment key={index}>
-                    <div className="flex gap-4 items-start" style={{ marginLeft: 20, marginRight: 20 }}>
-                        {/* Dynamic FontAwesome Number Icon */}
-                        <i className={`fa-solid fa-${index + 1} mt-2`}></i>
+            <div className="flex flex-col">
+                {experiences.map((exp, index) => (
+                    <div key={index} className="relative flex gap-6 pb-10 last:pb-0">
+                        {/* Timeline spine */}
+                        <div className="flex flex-col items-center">
+                            <div className="mt-1.5 size-3 shrink-0 rounded-full bg-primary ring-2 ring-background ring-offset-2 ring-offset-background" />
+                            {index !== experiences.length - 1 && (
+                                <div className="mt-2 w-px flex-1 bg-border" />
+                            )}
+                        </div>
 
-                        <div className="flex flex-col" style={{ marginLeft: 20 }}>
-                            <h2 className="font-medium text-lg font-bold">
-                                {exp.role} @ {exp.company}
-                            </h2>
-                            <h3 className="text-md text-gray-500 italic">
-                                {exp.duration}
-                            </h3>
-                            
-                            {/* Render Description Points */}
-                            <div className="flex flex-col gap-2" style={{ marginTop: 15 }}>
-                                {exp.points.map((point, pIdx) => (
-                                    <span key={pIdx}>• {point}</span>
-                                ))}
+                        {/* Content */}
+                        <div className="flex flex-col gap-3 pb-2 flex-1 min-w-0">
+                            <div className="flex flex-wrap items-start justify-between gap-2">
+                                <div>
+                                    <h3 className="font-semibold text-base leading-snug">{exp.role}</h3>
+                                    <p className="text-sm text-muted-foreground mt-0.5">{exp.company}</p>
+                                </div>
+                                <Badge variant="outline" className="shrink-0 text-xs font-normal">
+                                    {exp.duration}
+                                </Badge>
                             </div>
 
-                            {/* Optional Action Button */}
+                            <ul className="flex flex-col gap-2">
+                                {exp.points.map((point, pIdx) => (
+                                    <li
+                                        key={pIdx}
+                                        className="flex gap-2.5 text-sm text-foreground/80 leading-relaxed"
+                                    >
+                                        <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground" />
+                                        {point}
+                                    </li>
+                                ))}
+                            </ul>
+
                             {exp.link && (
-                                <button 
-                                    className="btn btn-primary w-64 h-10" 
-                                    style={{ marginTop: 15 }} 
-                                    onClick={() => handleNavigate(exp.link?.url ?? '')}
+                                <Button
+                                    asChild
+                                    variant="outline"
+                                    size="sm"
+                                    className="w-fit mt-1"
                                 >
-                                    {exp.link?.label}
-                                </button>
+                                    <Link
+                                        href={exp.link.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {exp.link.label}
+                                    </Link>
+                                </Button>
                             )}
                         </div>
                     </div>
-
-                    {/* Don't show divider after the last item */}
-                    {index !== experiences.length - 1 && <div className="divider"></div>}
-                </React.Fragment>
-            ))}
-        </div>
+                ))}
+            </div>
+        </section>
     );
-}
+};
 
 export default ExperienceList;

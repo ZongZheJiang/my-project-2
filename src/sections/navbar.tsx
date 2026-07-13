@@ -58,9 +58,6 @@ export const NavigationMenuDemo = () => {
 
         <div className="flex items-center gap-3">
           <ThemeSwitcher />
-          <Button className="mr-2">
-            <Link href="/download">Download</Link>
-          </Button>
         </div>
       </div>
     </header>
