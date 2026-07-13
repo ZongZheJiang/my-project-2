@@ -1,6 +1,3 @@
-"use client";
-
-import React from 'react';
 import { Experience } from '@/types/experience';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';

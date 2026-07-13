@@ -1,4 +1,4 @@
-import Hero from "../components/hero";
+import Hero from "../sections/hero";
 import { NavigationMenuDemo } from "@/sections/navbar";
 
 export default function Home() {

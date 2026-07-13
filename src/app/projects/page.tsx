@@ -1,5 +1,3 @@
-"use client";
-
 import { NavigationMenuDemo } from "@/sections/navbar";
 import ProjectCardGrid from "@/sections/projectCardGrid";
 

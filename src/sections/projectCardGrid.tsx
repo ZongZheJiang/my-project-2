@@ -17,6 +17,15 @@ import { PROJECT_CARD_LIST } from "@/data/projectCard";
 
 const ALL = "All";
 
+const PROJECT_TYPE_STYLES: Record<string, string> = {
+  Engineering:
+    "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
+  Consultancy:
+    "border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-800 dark:bg-violet-900/30 dark:text-violet-300",
+  "Web Development":
+    "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
+};
+
 function ProjectCardGrid() {
   const types = [ALL, ...Array.from(new Set(PROJECT_CARD_LIST.map((p) => p.projectType)))];
   const [activeFilter, setActiveFilter] = useState(ALL);
@@ -61,7 +70,12 @@ function ProjectCardGrid() {
                 />
                 <CardHeader>
                   <CardAction>
-                    <Badge variant="secondary">{item.projectType}</Badge>
+                    <Badge
+                      variant="outline"
+                      className={PROJECT_TYPE_STYLES[item.projectType] ?? ""}
+                    >
+                      {item.projectType}
+                    </Badge>
                   </CardAction>
                   <CardTitle>{item.title}</CardTitle>
                   <CardDescription>{item.body}</CardDescription>

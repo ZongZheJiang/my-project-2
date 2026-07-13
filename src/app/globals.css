@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Tailwind dark: utilities respond to .dark class (toggled by ThemeProvider) */
+@variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -21,27 +24,25 @@
   --ring: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #fafafa;
-    --card: #0a0a0a;
-    --card-foreground: #fafafa;
-    --popover: #0a0a0a;
-    --popover-foreground: #fafafa;
-    --primary: #fafafa;
-    --primary-foreground: #171717;
-    --secondary: #27272a;
-    --secondary-foreground: #fafafa;
-    --muted: #27272a;
-    --muted-foreground: #a1a1aa;
-    --accent: #27272a;
-    --accent-foreground: #fafafa;
-    --destructive: #7f1d1d;
-    --border: #27272a;
-    --input: #27272a;
-    --ring: #d4d4d8;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #111113;
+  --card-foreground: #fafafa;
+  --popover: #111113;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #171717;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+  --destructive: #ef4444;
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #d4d4d8;
 }
 
 @theme inline {
@@ -73,8 +74,5 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
-  }
-  html {
-    @apply font-sans;
   }
 }

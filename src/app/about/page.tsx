@@ -1,5 +1,5 @@
-import IntroBanner from '@/components/intro-banner';
-import ExperienceList from '@/components/experience-list';
+import IntroBanner from '@/sections/intro-banner';
+import ExperienceList from '@/sections/experience-list';
 import { NavigationMenuDemo } from '@/sections/navbar';
 
 import { EXPERIENCE_LIST } from '@/data/experience';

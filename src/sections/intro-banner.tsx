@@ -17,7 +17,7 @@ const IntroBanner = () => {
     <Card className="m-6 overflow-hidden">
       <CardContent className="flex flex-col md:flex-row gap-0 p-0">
         {/* Photo panel */}
-        <div className="md:w-72 shrink-0 bg-muted flex items-center justify-center p-10">
+        <div className="md:w-72 shrink-0 bg-transparent flex items-center justify-center p-10">
           <img
             src="/self-portrait.jpeg"
             alt="Jiang Zong Zhe"
