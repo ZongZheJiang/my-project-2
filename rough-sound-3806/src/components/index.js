@@ -1,9 +1,9 @@
 import NavBar from "./navbar";
-import ProjectCard from "./card";
+import Card from "./card";
 import IntroBanner from "./intro-banner";
 import Hero from "./hero";
 import Footer from "./footer";
 
 export {
-    NavBar, ProjectCard as Card, IntroBanner, Hero, Footer
+    NavBar, Card, IntroBanner, Hero, Footer
 }

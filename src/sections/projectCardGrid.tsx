@@ -1,0 +1,87 @@
+"use client";
+
+import { useState } from "react";
+import {
+  Card,
+  CardAction,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "../components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import { PROJECT_CARD_LIST } from "@/data/projectCard";
+
+const ALL = "All";
+
+function ProjectCardGrid() {
+  const types = [ALL, ...Array.from(new Set(PROJECT_CARD_LIST.map((p) => p.projectType)))];
+  const [activeFilter, setActiveFilter] = useState(ALL);
+
+  const visible =
+    activeFilter === ALL
+      ? PROJECT_CARD_LIST
+      : PROJECT_CARD_LIST.filter((p) => p.projectType === activeFilter);
+
+  return (
+    <div className="w-full max-w-7xl mx-auto px-6 py-12">
+      {/* Filter toolbar */}
+      <div className="flex gap-2 flex-wrap mb-10">
+        {types.map((type) => (
+          <Button
+            key={type}
+            variant={activeFilter === type ? "default" : "outline"}
+            size="sm"
+            onClick={() => setActiveFilter(type)}
+          >
+            {type}
+          </Button>
+        ))}
+      </div>
+
+      {/* Card grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {visible.map((item) => (
+          <div
+            key={item.id}
+            className="flex flex-col sm:flex-row justify-between items-start gap-6 pb-8 border-b border-neutral-100 last:border-b-0 lg:border-b-0"
+          >
+            <div className="flex-1 min-w-0 w-[30%]">
+              <Card className="relative mx-auto w-full max-w-sm pt-0">
+                <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
+                <Image
+                  src={item.mediaUrl}
+                  alt={item.title}
+                  width={128}
+                  height={96}
+                  className="relative z-20 aspect-video w-full object-cover"
+                />
+                <CardHeader>
+                  <CardAction>
+                    <Badge variant="secondary">{item.projectType}</Badge>
+                  </CardAction>
+                  <CardTitle>{item.title}</CardTitle>
+                  <CardDescription>{item.body}</CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <Button className="w-full" asChild>
+                    <Link href={item.href}>View Detailed Writeup</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {visible.length === 0 && (
+        <p className="text-center text-muted-foreground py-16">No projects match this filter.</p>
+      )}
+    </div>
+  );
+}
+
+export default ProjectCardGrid;

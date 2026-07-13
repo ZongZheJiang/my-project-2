@@ -1,10 +1,10 @@
 import Hero from "../components/hero";
-import { NavigationMenuDemo } from "@/sections/navbar";
+import NavBar from "../components/navbar";
 
 export default function Home() {
   return (
     <div>
-      <NavigationMenuDemo />
+      <NavBar />
       <main className="pt-20">
         <Hero 
           title="Jiang Zong Zhe"
